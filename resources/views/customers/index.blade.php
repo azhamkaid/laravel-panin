@@ -23,7 +23,7 @@
       <td>
         <form action="/customers/{{$customer->id}}" method="POST">
             @method('DELETE')
-            @csrf
+            @csrf 
             <a href="/customers/{{$customer->id}}" class="btn btn-success">View</a>
             <a href="/customers/{{$customer->id}}/edit" class="btn btn-success">Edit</a>
             <button type="submit" class="btn btn-danger">Delete</button>

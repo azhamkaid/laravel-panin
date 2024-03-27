@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -6,7 +5,7 @@
 <div class="card col-6 offset-3">
   <h5 class="card-header">Add Customer</h5>
   <div class="card-body">
-
+  @include('messages')
      <form action="/customers" method="POST">
         @csrf
         <div class="mb-3">
