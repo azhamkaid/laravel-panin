@@ -1,8 +1,8 @@
 <?php
-
+namespace App\Http\Controllers;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
-
+use App\Models\Customer;
 define('LARAVEL_START', microtime(true));
 
 /*
@@ -50,6 +50,28 @@ $kernel = $app->make(Kernel::class);
 
 $response = $kernel->handle(
     $request = Request::capture()
+
 )->send();
 
 $kernel->terminate($request, $response);
+
+class CustomerControllera extends Controller
+{
+    public function store(Request $request)
+    {
+        // Define validation rules
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:customers,email',
+            // Add more validation rules as needed
+        ]);
+
+        // If validation passes, proceed to store the customer
+        $customer = new Customer();
+        $customer->email = $request->email;
+        // Add more fields as needed
+        $customer->save();
+
+        // Optionally, redirect the user after successful submission
+        return redirect()->route('success');
+    }
+}
