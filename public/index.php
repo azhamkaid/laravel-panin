@@ -64,7 +64,10 @@ class CustomerControllera extends Controller
             'email' => 'required|email|unique:customers,email',
             // Add more validation rules as needed
         ]);
-
+        $validatedData = $request->validate([
+            'phone' => 'required|phone|unique:customers,phone',
+            // Add more validation rules as needed
+        ]);
         // If validation passes, proceed to store the customer
         $customer = new Customer();
         $customer->email = $request->email;
